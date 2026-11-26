@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Gate Assignment System</title>
+
+    <style>
+        /* Basic page styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background-color: #123456;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        nav {
+            background-color: #1e3a5f;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #123456;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            background-color: #e0f2fe;
+            padding: 18px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .box h3 {
+            margin: 5px;
+            font-size: 26px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #123456;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        /* Form */
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #123456;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        /* Status */
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .occupied {
+            color: red;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #c47a00;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #123456;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                width: 95%;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Airport Gate Assignment System</h1>
+        <p>Smart Flight and Gate Management Interface</p>
+    </header>
+
+    <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#flights">Flights</a>
+        <a href="#gates">Gates</a>
+        <a href="#assignment">Assignment</a>
+        <a href="#schedule">Schedule</a>
+    </nav>
+
+    <main>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard">
+            <h2>Airport Dashboard</h2>
+
+            <div class="dashboard">
+                <div class="box">
+                    <h3>5</h3>
+                    <p>Total Flights</p>
+                </div>
+
+                <div class="box">
+                    <h3>4</h3>
+                    <p>Total Gates</p>
+                </div>
+
+                <div class="box">
+                    <h3>2</h3>
+                    <p>Available Gates</p>
+                </div>
+
+                <div class="box">
+                    <h3>1</h3>
+                    <p>Conflicts</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flight Records -->
+        <section id="flights">
+            <h2>Flight Records</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight ID</th>
+                        <th>Airline</th>
+                        <th>Aircraft</th>
+                        <th>Arrival</th>
+                        <th>Departure</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>AI101</td>
+                        <td>Air India</td>
+                        <td>Large</td>
+                        <td>09:00 AM</td>
+                        <td>10:00 AM</td>
+                    </tr>
+
+                    <tr>
+                        <td>6E202</td>
+                        <td>IndiGo</td>
+                        <td>Medium</td>
+                        <td>09:30 AM</td>
+                        <td>10:30 AM</td>
+                    </tr>
+
+                    <tr>
+                        <td>UK303</td>
+                        <td>Vistara</td>
+                        <td>Large</td>
+                        <td>11:00 AM</td>
+                        <td>12:00 PM</td>
+                    </tr>
+
+                    <tr>
+                        <td>SG404</td>
+                        <td>SpiceJet</td>
+                        <td>Small</td>
+                        <td>12:00 PM</td>
+                        <td>01:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Gate Records -->
+        <section id="gates">
+            <h2>Gate Records and Status</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gate Number</th>
+                        <th>Gate Type</th>
+                        <th>Aircraft Capacity</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Gate 01</td>
+                        <td>International</td>
+                        <td>Large</td>
+                        <td class="occupied">Occupied</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gate 02</td>
+                        <td>Domestic</td>
+                        <td>Medium</td>
+                        <td class="available">Available</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gate 03</td>
+                        <td>Domestic</td>
+                        <td>Small</td>
+                        <td class="available">Available</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gate 04</td>
+                        <td>International</td>
+                        <td>Large</td>
+                        <td class="occupied">Occupied</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Aircraft Requirements -->
+        <section id="requirements">
+            <h2>Aircraft Requirements</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aircraft Type</th>
+                        <th>Required Gate Capacity</th>
+                        <th>Gate Requirement</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Large Aircraft</td>
+                        <td>Large</td>
+                        <td>International / Large Gate</td>
+                    </tr>
+
+                    <tr>
+                        <td>Medium Aircraft</td>
+                        <td>Medium</td>
+                        <td>Medium or Large Gate</td>
+                    </tr>
+
+                    <tr>
+                        <td>Small Aircraft</td>
+                        <td>Small</td>
+                        <td>Small, Medium or Large Gate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Gate Assignment -->
+        <section id="assignment">
+            <h2>Flight Gate Assignment</h2>
+
+            <form action="#" method="get">
+
+                <label for="flight">Select Flight:</label>
+                <select id="flight" name="flight">
+                    <option>AI101</option>
+                    <option>6E202</option>
+                    <option>UK303</option>
+                    <option>SG404</option>
+                </select>
+
+                <label for="gate">Select Gate:</label>
+                <select id="gate" name="gate">
+                    <option>Gate 01</option>
+                    <option>Gate 02</option>
+                    <option>Gate 03</option>
+                    <option>Gate 04</option>
+                </select>
+
+                <label for="arrival">Arrival Time:</label>
+                <input type="time" id="arrival" name="arrival">
+
+                <label for="departure">Departure Time:</label>
+                <input type="time" id="departure" name="departure">
+
+                <button type="submit">Submit Assignment</button>
+
+            </form>
+        </section>
+
+        <!-- Schedule -->
+        <section id="schedule">
+            <h2>Flight Schedule</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight</th>
+                        <th>Gate</th>
+                        <th>Arrival</th>
+                        <th>Departure</th>
+                        <th>Schedule Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>AI101</td>
+                        <td>Gate 01</td>
+                        <td>09:00 AM</td>
+                        <td>10:00 AM</td>
+                        <td class="available">Assigned</td>
+                    </tr>
+
+                    <tr>
+                        <td>6E202</td>
+                        <td>Gate 01</td>
+                        <td>09:30 AM</td>
+                        <td>10:30 AM</td>
+                        <td class="warning">Time Conflict</td>
+                    </tr>
+
+                    <tr>
+                        <td>UK303</td>
+                        <td>Gate 04</td>
+                        <td>11:00 AM</td>
+                        <td>12:00 PM</td>
+                        <td class="available">Assigned</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Airport Gate Assignment System | Student Project</p>
+        <p>Designed using HTML and CSS</p>
+    </footer>
+
+</body>
+</html>
